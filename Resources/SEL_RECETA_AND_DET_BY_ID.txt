@@ -1,0 +1,17 @@
+SELECT
+    a.receta_id,
+    a.nombre,
+    a.descripcion,
+    b.receta_detalle_id,
+    b.ingrediente_id,
+    b.cantidad_necesaria,
+    b.unidad_medida_id,
+    c.nombre      AS nombre1,
+    c.descripcion AS descripcion1,
+    c.stock_actual
+FROM
+         receta a
+    INNER JOIN panaderia.receta_detalle b ON a.receta_id = b.receta_id
+    INNER JOIN panaderia.ingrediente    c ON c.ingrediente_id = b.ingrediente_id
+WHERE
+    b.receta_id = :receta_id

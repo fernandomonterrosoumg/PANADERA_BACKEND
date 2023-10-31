@@ -1,0 +1,4 @@
+SELECT
+   *
+FROM
+    producto a where SUCURSAL_ID=:sucursal_id

@@ -1,0 +1,9 @@
+SELECT 
+        u.USUARIO_ID, u.NOMBRE,u.Usuario, u.FECHA_CREACION, u.ULTIMO_INGRESO, 
+        r.ROL_TIPO_ID, r.NOMBRE AS RolNombre, r.DESCRIPCION AS RolDESCRIPCION 
+    FROM 
+        USUARIO u 
+    INNER JOIN 
+        ROL_TIPO r ON u.ROL_TIPO_ID = r.ROL_TIPO_ID 
+    WHERE 
+        u.usuario = :nombreUsuario AND u.CONTRASEnA = :contrasena

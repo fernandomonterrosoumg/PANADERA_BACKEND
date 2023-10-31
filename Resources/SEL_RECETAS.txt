@@ -1,0 +1,6 @@
+SELECT
+    receta_id,
+    nombre,
+    descripcion
+FROM
+    receta

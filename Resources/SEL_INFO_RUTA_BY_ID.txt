@@ -1,0 +1,16 @@
+SELECT
+    inicio.nombre nombre_inicio,
+    fin.nombre    nombre_fin,
+    a.ruta_id,
+    a.distancia,
+    a.descripcion,
+    t.descripcion AS descripcion_transporte,
+    t.tipo,
+    inicio.sucursal_id sucursal_id_ini
+FROM
+         ruta a
+    INNER JOIN sucursal             fin ON fin.sucursal_id = a.sucursal_id_fin
+    INNER JOIN sucursal             inicio ON a.sucursal_id_origen = inicio.sucursal_id
+    INNER JOIN panaderia.transporte t ON a.transporte_id = t.transporte_id
+WHERE
+    a.ruta_id = :ruta_id

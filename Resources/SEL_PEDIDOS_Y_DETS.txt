@@ -1,0 +1,19 @@
+SELECT
+    a.pedido_id,
+    a.cantidad_solicitada,
+    a.fecha_pedido,
+    a.fecha_despacho,
+    d.usuario,
+    c.descripcion,
+    r.distancia,
+    b.descr,
+    b.title,
+    a.fecha_ingreso_real,
+    r.descripcion AS descripcion1
+FROM
+         panaderia.pedido a
+    INNER JOIN panaderia.status     b ON a.status = b.status
+                                     AND a.mini_sistem_id = b.mini_sistem_id
+    INNER JOIN panaderia.ruta       r ON a.ruta_id = r.ruta_id
+    INNER JOIN panaderia.usuario    d ON d.usuario_id = a.usuario_id
+    INNER JOIN panaderia.transporte c ON c.transporte_id = r.transporte_id

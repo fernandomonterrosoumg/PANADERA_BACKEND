@@ -1,0 +1,19 @@
+SELECT
+    b.receta_id,
+    panaderia.unidad_medida.*,
+    panaderia.unidad_medida.unidad_medida_id AS unidad_medida_id1,
+    panaderia.unidad_medida.nombre           AS nombre1,
+    panaderia.unidad_medida.abreviatura      AS abreviatura1,
+    b.receta_detalle_id,
+    b.ingrediente_id,
+    b.cantidad_necesaria,
+    b.unidad_medida_id                       AS unidad_medida_id2,
+    c.ingrediente_id                         AS ingrediente_id1,
+    c.nombre                                 AS nombre2,
+    c.descripcion
+FROM
+         panaderia.receta_detalle b
+    INNER JOIN panaderia.ingrediente c ON c.ingrediente_id = b.ingrediente_id
+    INNER JOIN panaderia.unidad_medida ON b.unidad_medida_id = panaderia.unidad_medida.unidad_medida_id
+WHERE
+    b.receta_id = :receta_id

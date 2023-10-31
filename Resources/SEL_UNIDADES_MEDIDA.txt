@@ -1,0 +1,6 @@
+SELECT
+    unidad_medida_id,
+    nombre,
+    abreviatura
+FROM
+    unidad_medida
